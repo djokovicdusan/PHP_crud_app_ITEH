@@ -141,6 +141,108 @@
         </div>
     </footer>
 
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootsnav.js"></script>
+    <script src="js/isotope.js"></script>
+    <script src="js/isotope-active.js"></script>
+    <script src="js/jquery.fancybox.js?v=2.1.5"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        function vratiKomboSport() {
+            $.ajax({
+                url: 'vratiKomboSport.php',
+                success: function(data) {
+                    $("#sport").html(data);
+                    $("#pretraga").html(data);
+                    pretrazi();
+                }
+            });
+        }
+        vratiKomboSport();
+
+        function vratiKomboUtakmica() {
+            $.ajax({
+                url: 'vratiKomboUtakmica.php',
+                success: function(data) {
+                    $("#utakmicaIzmena").html(data);
+                }
+            });
+        }
+        vratiKomboUtakmica();
+
+        function dodajUtakmicu() {
+            let podaci = {
+                nazivUtakmice: $("#nazivUtakmice").val(),
+                komentar: $("#komentar").val(),
+                sport: $("#sport").val(),
+                cenaKarte: $("#cenaKarte").val()
+            };
+
+            $.ajax({
+                url: 'dodajUtakmicu.php',
+                type: 'POST',
+                data: podaci,
+                success: function(data) {
+                    $("#odgovorUnos").html(data);
+                    pretrazi();
+                    vratiKomboSport();
+                },
+                error: function () {
+                    header('Location: ' . $_SERVER['HTTP_REFERER']); //vraca na prethodnu stranu
+                }
+            });
+        }
+
+        function pretrazi() {
+            let podaci = {
+                pretraga: $("#pretraga").val(),
+                sort: $("#sort").val()
+            };
+
+            $.ajax({
+                url: 'pretraziUtakmice.php',
+                type: 'POST',
+                data: podaci,
+                success: function(data) {
+                    $("#tabela").html(data);
+                }
+            });
+        }
+
+        function obrisi(id) {
+            $.ajax({
+                url: 'obrisi.php?id=' + id,
+                success: function(data) {
+                    $("#odgovorUnos").html(data);
+                    pretrazi();
+                    vratiKomboUtakmica();
+                }
+            });
+        }
+
+        function izmeniUtakmicu() {
+            let podaci = {
+                utakmicaID: $("#utakmicaIzmena").val(),
+                komentar: $("#komentarIzmena").val(),
+                cenaKarte: $("#cenaKarteIzmena").val()
+            };
+
+            $.ajax({
+                url: 'izmeniUtakmicu.php',
+                type: 'POST',
+                data: podaci,
+                success: function(data) {
+                    console.log(data);
+                    $("#odgovorIzmena").html(data);
+                    pretrazi();
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>
