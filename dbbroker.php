@@ -17,6 +17,7 @@ class DBBroker
         $rs = $this->mysqli->query($upit);
         $sportovi = [];
         while ($red = $rs->fetch_object()) {
+            //fetch-object -- spaja u objekat
             $sportovi[] = new Sport($red->sportID,$red->nazivSporta);
         }
         return $sportovi;
