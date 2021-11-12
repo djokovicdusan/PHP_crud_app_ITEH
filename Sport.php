@@ -1,6 +1,7 @@
 <?php
 class Sport
 {
+    //model
     private $sportID;
     private $nazivSporta;
 

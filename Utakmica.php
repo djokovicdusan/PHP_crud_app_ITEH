@@ -1,5 +1,6 @@
 <?php
 class Utakmica
+//model
 {
     private $utakmicaID;
     private $nazivUtakmice;
