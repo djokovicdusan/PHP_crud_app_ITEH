@@ -1,10 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Utakmice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="custom-font/fonts.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootsnav.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <style>
+        h2 {
+            color: darkred;
+        }
+        
+        p {
+            color: white;
+        }
+    </style>
 </head>
-<body>
+
+<body style="color: black;">
+    <header>
+        <nav class="navbar bootsnav" style="background-color: darkred">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav menu">
+                        <li><a href="#unos">Unesi utakmicu</a></li>
+                        <li><a href="#izmena">Izmeni utakmicu</a></li>
+                        <li><a href="#pretragaisortiranje">Pronađi utakmicu</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="unos">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="about_content">
+                        <h2 style="color: white;">Unesi utakmicu</h2>
+                        <label for="nazivUtakmice" style="color: white;">Domaćin - Gost</label>
+                        <input type="text" class="form-control" id="nazivUtakmice">
+                        <label for="komentar" style="color: white;">Detalji</label>
+                        <textarea class="form-control" rows="3" id="komentar"></textarea>
+                        <label for="sport" style="color: white;">Sport</label>
+                        <select class="form-control" id="sport">
+                        </select>
+                        <label for="cenaKarte" style="color: white;">Cena karte</label>
+                        <input type="number" class="form-control" id="cenaKarte">
+
+                        <button class="btn know_btn" style="background-color:darkred;" onclick="dodajUtakmicu()">Dodaj</button>
+
+                        <div style="color: white;" id="odgovorUnos">
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="izmena">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="about_content">
+                        <h2 style="color: white;">Izmeni utakmicu</h2>
+
+                        <label style="color: white;" for="utakmicaIzmena">Domaćin - Gost</label>
+                        <select class="form-control" id="utakmicaIzmena">
+
+                        </select>
+                        <label style="color: white;" for="komentarIzmena">Detalji</label>
+                        <textarea class="form-control" rows="3" id="komentarIzmena"></textarea>
+
+                        <label style="color: white;" for="cenaKarteIzmena">Cena karte</label>
+                        <input type="text" class="form-control" id="cenaKarteIzmena">
+
+                        <button class="btn know_btn" style="background-color: darkred;" onclick="izmeniUtakmicu()">Izmeni</button>
+                        
+                        <div id="odgovorIzmena">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="pretragaisortiranje">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="about_content">
+                        <h2 style="color: white;">Pretraga utakmica</h2>
+                        <label style="color: white; " for="pretraga">Izaberi sport</label>
+                        <select class="form-control" id="pretraga" onchange="pretrazi()">
+
+                        </select>
+                        <label style="color: white;" for="sort">Sortiraj - po ceni</label>
+                        <select class="form-control" id="sort" onchange="pretrazi()">
+                                <option value="asc">Rastuće</option>
+                                <option value="desc">Opadajuće</option>
+                            </select>
+
+                        <br>    
+
+                        <hr>
+
+                        <br>
+
+                        <div id="tabela" style="color: white;">
+
+                        </div>
+
+                        <br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer_bottom text-center" style="background-color: darkred">
+            <p style="color: white;">sportskemanifestacije.rs</p>
+        </div>
+    </footer>
 
 </body>
+
 </html>
