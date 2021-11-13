@@ -1,5 +1,6 @@
 <?php
 include "konekcija.php";
+//single responsibility
 
 $sportovi = $baza->vratiSveSportove();
 /** @var Sport $sport */

@@ -1,5 +1,6 @@
 <?php
 include 'konekcija.php';
+// OPERATION NOTIFICATION...
 
 $id = $_GET['id'];
 

@@ -1,6 +1,6 @@
 <?php
 include 'konekcija.php';
-
+//SEARCH
 $utakmice = $db->vratiUtakmicePoPretrazi($_POST['pretraga'],$_POST['sort']);
 ?>
 <table class="table table-hover" >
